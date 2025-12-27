@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete CSS Learning Reference</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ========================================
+         SECTION 0: STICKY NAVIGATION
+         Concept: position: sticky, z-index
+    ======================================== -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">CSS<span>Master</span></a>
+            <ul class="nav-menu">
+                <li><a href="#box-model">Box Model</a></li>
+                <li><a href="#display">Display</a></li>
+                <li><a href="#position">Position</a></li>
+                <li><a href="#flexbox">Flexbox</a></li>
+                <li><a href="#grid">Grid</a></li>
+                <li><a href="#components">Components</a></li>
+            </ul>
+            <!-- Hamburger for Mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+         Concepts: background, gradient, centering
+    ======================================== -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Complete CSS Learning Reference</h1>
+            <p class="hero-subtitle">Master every CSS concept from Box Model to Grid Layout</p>
+            <div class="hero-buttons">
+                <a href="#box-model" class="btn btn-primary btn-lg">Start Learning</a>
+                <a href="#components" class="btn btn-outline btn-lg">View Components</a>
+            </div>
+        </div>
+        <!-- Decorative shapes using CSS -->
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <!-- ========================================
+             SECTION 1: BOX MODEL
+             Concepts: margin, padding, border, width, height
+        ======================================== -->
+        <section id="box-model" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Box Model</h2>
+                <p>Every element is a box: content + padding + border + margin</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Visual Box Model Demo -->
+                <div class="demo-card">
+                    <h3>Visual Box Model</h3>
+                    <div class="box-model-demo">
+                        <div class="box-margin">
+                            <span class="box-label">margin</span>
+                            <div class="box-border">
+                                <span class="box-label">border</span>
+                                <div class="box-padding">
+                                    <span class="box-label">padding</span>
+                                    <div class="box-content">
+                                        content
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="code-snippet">.element {
+  margin: 20px;      /* Outside space */
+  border: 5px solid; /* Border line */
+  padding: 15px;     /* Inside space */
+  width: 200px;      /* Content width */
+}</pre>
+                </div>
+
+                <!-- Box Sizing Demo -->
+                <div class="demo-card">
+                    <h3>box-sizing Property</h3>
+                    <div class="box-sizing-demo">
+                        <div class="box-content-box">
+                            <strong>content-box</strong>
+                            <small>width: 200px + padding + border</small>
+                        </div>
+                        <div class="box-border-box">
+                            <strong>border-box</strong>
+                            <small>width: 200px (includes padding & border)</small>
+                        </div>
+                    </div>
+                    <pre class="code-snippet">/* Default - adds to width */
+.box { box-sizing: content-box; }
+
+/* Recommended - includes padding */
+* { box-sizing: border-box; }</pre>
+                </div>
+
+                <!-- Margin Collapse Demo -->
+                <div class="demo-card">
+                    <h3>Margin Collapse</h3>
+                    <div class="margin-collapse-demo">
+                        <div class="margin-box-1">margin-bottom: 30px</div>
+                        <div class="margin-box-2">margin-top: 20px</div>
+                        <p class="demo-note">↑ Gap is 30px (larger wins), not 50px!</p>
+                    </div>
+                    <pre class="code-snippet">.box1 { margin-bottom: 30px; }
+.box2 { margin-top: 20px; }
+/* Gap = 30px (larger wins)
+   Vertical margins collapse! */</pre>
+                </div>
+
+                <!-- Width/Height Demo -->
+                <div class="demo-card">
+                    <h3>Width & Height Units</h3>
+                    <div class="units-demo">
+                        <div class="unit-px">200px (fixed)</div>
+                        <div class="unit-percent">50% (of parent)</div>
+                        <div class="unit-vw">80vw (of viewport)</div>
+                        <div class="unit-auto">auto (content width)</div>
+                    </div>
+                    <pre class="code-snippet">.fixed    { width: 200px; }
+.relative { width: 50%; }
+.viewport { width: 80vw; }
+.auto     { width: auto; }</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 2: DISPLAY PROPERTY
+             Concepts: block, inline, inline-block, none
+        ======================================== -->
+        <section id="display" class="section section-alt">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Display Property</h2>
+                <p>Controls how an element generates boxes</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Block vs Inline -->
+                <div class="demo-card">
+                    <h3>block vs inline</h3>
+                    <div class="display-demo">
+                        <div class="d-block">Block 1</div>
+                        <div class="d-block">Block 2 (takes full width)</div>
+                        <span class="d-inline">Inline 1</span>
+                        <span class="d-inline">Inline 2</span>
+                        <span class="d-inline">(flows with text)</span>
+                    </div>
+                    <pre class="code-snippet">/* Block: full width, new line */
+div { display: block; }
+
+/* Inline: flows with text */
+span { display: inline; }</pre>
+                </div>
+
+                <!-- Inline-Block -->
+                <div class="demo-card">
+                    <h3>inline-block</h3>
+                    <div class="inline-block-demo">
+                        <div class="d-inline-block">Box 1</div>
+                        <div class="d-inline-block">Box 2</div>
+                        <div class="d-inline-block">Box 3</div>
+                        <p class="demo-note">Best of both: inline flow + block sizing</p>
+                    </div>
+                    <pre class="code-snippet">.box {
+  display: inline-block;
+  width: 100px;  /* works! */
+  height: 80px;  /* works! */
+}</pre>
+                </div>
+
+                <!-- Display None vs Visibility -->
+                <div class="demo-card">
+                    <h3>none vs visibility: hidden</h3>
+                    <div class="visibility-demo">
+                        <div class="box-visible">Visible</div>
+                        <div class="box-hidden">Hidden (space kept)</div>
+                        <div class="box-none">None (removed)</div>
+                        <div class="box-visible">Visible</div>
+                    </div>
+                    <pre class="code-snippet">/* Removes from layout */
+.gone { display: none; }
+
+/* Invisible but keeps space */
+.invisible { visibility: hidden; }</pre>
+                </div>
+
+                <!-- Table Display -->
+                <div class="demo-card">
+                    <h3>display: table</h3>
+                    <div class="table-display-demo">
+                        <div class="d-table">
+                            <div class="d-table-row">
+                                <div class="d-table-cell">Cell 1</div>
+                                <div class="d-table-cell">Cell 2</div>
+                            </div>
+                            <div class="d-table-row">
+                                <div class="d-table-cell">Cell 3</div>
+                                <div class="d-table-cell">Cell 4</div>
+                            </div>
+                        </div>
+                    </div>
+                    <pre class="code-snippet">.table { display: table; }
+.row   { display: table-row; }
+.cell  { display: table-cell; }</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 3: POSITION PROPERTY
+             Concepts: static, relative, absolute, fixed, sticky
+        ======================================== -->
+        <section id="position" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Position Property</h2>
+                <p>Controls how elements are positioned in the document</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Static (Default) -->
+                <div class="demo-card">
+                    <h3>static (default)</h3>
+                    <div class="position-demo">
+                        <div class="pos-static">Static Box 1</div>
+                        <div class="pos-static">Static Box 2</div>
+                        <p class="demo-note">Normal document flow. top/left ignored.</p>
+                    </div>
+                    <pre class="code-snippet">/* Default - normal flow */
+.element {
+  position: static;
+  /* top, left, etc. ignored */
+}</pre>
+                </div>
+
+                <!-- Relative -->
+                <div class="demo-card">
+                    <h3>relative</h3>
+                    <div class="position-demo">
+                        <div class="pos-static">Normal Box</div>
+                        <div class="pos-relative">Relative (top: 10px, left: 20px)</div>
+                        <div class="pos-static">Normal Box</div>
+                        <p class="demo-note">Offset from normal position. Space preserved.</p>
+                    </div>
+                    <pre class="code-snippet">.element {
+  position: relative;
+  top: 10px;   /* offset down */
+  left: 20px;  /* offset right */
+}</pre>
+                </div>
+
+                <!-- Absolute -->
+                <div class="demo-card">
+                    <h3>absolute</h3>
+                    <div class="position-demo pos-container">
+                        <div class="pos-static">Normal Box</div>
+                        <div class="pos-absolute">Absolute (top: 10px, right: 10px)</div>
+                        <div class="pos-static">Normal Box (no gap!)</div>
+                        <p class="demo-note">Removed from flow. Relative to positioned ancestor.</p>
+                    </div>
+                    <pre class="code-snippet">.parent { position: relative; }
+.child {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}</pre>
+                </div>
+
+                <!-- Fixed -->
+                <div class="demo-card">
+                    <h3>fixed</h3>
+                    <div class="position-demo">
+                        <p>Fixed elements stay in place during scroll.</p>
+                        <p>Example: The navbar at the top is <code>position: sticky</code></p>
+                        <p class="demo-note">See the "Back to Top" button at bottom-right →</p>
+                    </div>
+                    <pre class="code-snippet">.fixed-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  /* Stays on screen! */
+}</pre>
+                </div>
+
+                <!-- Sticky -->
+                <div class="demo-card demo-card-wide">
+                    <h3>sticky</h3>
+                    <div class="sticky-demo">
+                        <div class="sticky-container">
+                            <div class="sticky-item">Sticky Header A</div>
+                            <p>Content for section A. Scroll to see sticky behavior. Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit.</p>
+                            <p>More content here...</p>
+                        </div>
+                        <div class="sticky-container">
+                            <div class="sticky-item">Sticky Header B</div>
+                            <p>Content for section B. The header sticks until the container ends.</p>
+                            <p>More content here...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Z-Index -->
+                <div class="demo-card">
+                    <h3>z-index (Stacking)</h3>
+                    <div class="zindex-demo">
+                        <div class="z-box z-1">z-index: 1</div>
+                        <div class="z-box z-2">z-index: 2</div>
+                        <div class="z-box z-3">z-index: 3</div>
+                    </div>
+                    <p class="demo-note">Higher z-index = closer to viewer</p>
+                    <pre class="code-snippet">.behind  { z-index: 1; }
+.middle  { z-index: 2; }
+.infront { z-index: 3; }
+/* Needs position != static */</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 4: FLEXBOX
+             Concepts: flex container, flex items, alignment
+        ======================================== -->
+        <section id="flexbox" class="section section-alt">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Flexbox</h2>
+                <p>One-dimensional layout for rows OR columns</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Flex Direction -->
+                <div class="demo-card">
+                    <h3>flex-direction</h3>
+                    <div class="flex-direction-demo">
+                        <div class="flex-row">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>row (default)</small>
+                        <div class="flex-column">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>column</small>
+                    </div>
+                    <pre class="code-snippet">.container { display: flex; }
+.row    { flex-direction: row; }
+.column { flex-direction: column; }</pre>
+                </div>
+
+                <!-- Justify Content -->
+                <div class="demo-card demo-card-wide">
+                    <h3>justify-content (main axis)</h3>
+                    <div class="justify-demo">
+                        <div class="flex-demo jc-start">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>flex-start</small>
+                        <div class="flex-demo jc-center">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>center</small>
+                        <div class="flex-demo jc-end">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>flex-end</small>
+                        <div class="flex-demo jc-between">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>space-between</small>
+                        <div class="flex-demo jc-around">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>space-around</small>
+                        <div class="flex-demo jc-evenly">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>space-evenly</small>
+                    </div>
+                    <pre class="code-snippet">.container {
+  display: flex;
+  justify-content: space-between;
+  /* flex-start | center | flex-end */
+  /* space-around | space-evenly */
+}</pre>
+                </div>
+
+                <!-- Align Items -->
+                <div class="demo-card">
+                    <h3>align-items (cross axis)</h3>
+                    <div class="align-demo">
+                        <div class="flex-demo ai-start">
+                            <div>A</div>
+                            <div>B</div>
+                            <div>C</div>
+                        </div>
+                        <small>flex-start</small>
+                        <div class="flex-demo ai-center">
+                            <div>A</div>
+                            <div>B</div>
+                            <div>C</div>
+                        </div>
+                        <small>center</small>
+                        <div class="flex-demo ai-end">
+                            <div>A</div>
+                            <div>B</div>
+                            <div>C</div>
+                        </div>
+                        <small>flex-end</small>
+                        <div class="flex-demo ai-stretch">
+                            <div>A</div>
+                            <div>B</div>
+                            <div>C</div>
+                        </div>
+                        <small>stretch</small>
+                    </div>
+                    <pre class="code-snippet">.container {
+  display: flex;
+  align-items: center;
+  /* flex-start | flex-end */
+  /* stretch | baseline */
+}</pre>
+                </div>
+
+                <!-- Flex Wrap -->
+                <div class="demo-card">
+                    <h3>flex-wrap</h3>
+                    <div class="wrap-demo">
+                        <div class="flex-nowrap">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                        </div>
+                        <small>nowrap (overflow)</small>
+                        <div class="flex-wrap">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                        </div>
+                        <small>wrap</small>
+                    </div>
+                    <pre class="code-snippet">.container {
+  display: flex;
+  flex-wrap: wrap;
+  /* nowrap | wrap-reverse */
+}</pre>
+                </div>
+
+                <!-- Flex Item Properties -->
+                <div class="demo-card demo-card-wide">
+                    <h3>Flex Item Properties</h3>
+                    <div class="flex-item-demo">
+                        <div class="flex-demo">
+                            <div class="flex-grow-0">grow: 0</div>
+                            <div class="flex-grow-1">grow: 1</div>
+                            <div class="flex-grow-2">grow: 2</div>
+                        </div>
+                        <small>flex-grow: How much to grow</small>
+                        <div class="flex-demo">
+                            <div class="flex-basis-100">basis: 100px</div>
+                            <div class="flex-basis-200">basis: 200px</div>
+                            <div class="flex-basis-auto">basis: auto</div>
+                        </div>
+                        <small>flex-basis: Initial size before grow/shrink</small>
+                    </div>
+                    <pre class="code-snippet">.item {
+  flex-grow: 1;   /* grow ratio */
+  flex-shrink: 1; /* shrink ratio */
+  flex-basis: auto; /* initial size */
+  /* shorthand: flex: 1 1 auto; */
+}</pre>
+                </div>
+
+                <!-- Gap -->
+                <div class="demo-card">
+                    <h3>gap</h3>
+                    <div class="gap-demo">
+                        <div class="flex-demo flex-gap">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                        </div>
+                        <small>gap: 1rem (no margin hacks!)</small>
+                    </div>
+                    <pre class="code-snippet">.container {
+  display: flex;
+  gap: 1rem; /* same for rows & cols */
+  row-gap: 1rem;
+  column-gap: 2rem;
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 5: CSS GRID
+             Concepts: grid container, grid items, areas
+        ======================================== -->
+        <section id="grid" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>CSS Grid</h2>
+                <p>Two-dimensional layout for rows AND columns</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Basic Grid -->
+                <div class="demo-card">
+                    <h3>Basic Grid</h3>
+                    <div class="basic-grid-demo">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                    </div>
+                    <small>grid-template-columns: repeat(3, 1fr)</small>
+                    <pre class="code-snippet">.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}</pre>
+                </div>
+
+                <!-- Auto-Fit & Auto-Fill -->
+                <div class="demo-card demo-card-wide">
+                    <h3>auto-fit & minmax()</h3>
+                    <div class="autofit-grid-demo">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                    </div>
+                    <small>grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))</small>
+                    <p class="demo-note">Resize window to see responsive behavior!</p>
+                    <pre class="code-snippet">.responsive-grid {
+  display: grid;
+  grid-template-columns: 
+    repeat(auto-fit, minmax(120px, 1fr));
+  /* auto-fill: keeps empty columns */
+  /* auto-fit: collapses empty columns */
+}</pre>
+                </div>
+
+                <!-- Grid Gap -->
+                <div class="demo-card">
+                    <h3>Grid Gap</h3>
+                    <div class="grid-gap-demo">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                    </div>
+                    <small>row-gap: 1rem; column-gap: 2rem;</small>
+                    <pre class="code-snippet">.grid {
+  gap: 1rem;        /* both */
+  row-gap: 1rem;    /* rows only */
+  column-gap: 2rem; /* columns only */
+}</pre>
+                </div>
+
+                <!-- Grid Span -->
+                <div class="demo-card">
+                    <h3>Spanning Cells</h3>
+                    <div class="grid-span-demo">
+                        <div class="span-col-2">span 2 cols</div>
+                        <div>2</div>
+                        <div class="span-row-2">span 2 rows</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                    </div>
+                    <pre class="code-snippet">.span-2-cols {
+  grid-column: span 2;
+}
+.span-2-rows {
+  grid-row: span 2;
+}
+/* Or explicit: grid-column: 1 / 3; */</pre>
+                </div>
+
+                <!-- Grid Areas -->
+                <div class="demo-card demo-card-wide">
+                    <h3>Grid Template Areas</h3>
+                    <div class="grid-areas-demo">
+                        <div class="area-header">header</div>
+                        <div class="area-sidebar">sidebar</div>
+                        <div class="area-main">main</div>
+                        <div class="area-footer">footer</div>
+                    </div>
+                    <pre class="code-snippet">.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }</pre>
+                </div>
+
+                <!-- Grid Alignment -->
+                <div class="demo-card">
+                    <h3>Grid Alignment</h3>
+                    <div class="grid-align-demo">
+                        <div>Center</div>
+                    </div>
+                    <small>place-items: center (shorthand)</small>
+                    <pre class="code-snippet">.grid {
+  place-items: center; /* shorthand */
+  /* = justify-items + align-items */
+  place-content: center;
+  /* = justify-content + align-content */
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 6: UI COMPONENTS
+             Concepts: buttons, cards, forms, tables, etc.
+        ======================================== -->
+        <section id="components" class="section section-alt">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>UI Components</h2>
+                <p>Real-world components built with CSS</p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="component-section">
+                <h3 class="component-title">Buttons</h3>
+                <div class="button-showcase">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-outline">Outline</button>
+                    <button class="btn btn-ghost">Ghost</button>
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                    <button class="btn btn-primary btn-block">Block (Full Width)</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                    <button class="btn btn-icon">
+                        <span class="icon">★</span>
+                    </button>
+                </div>
+                <pre class="code-snippet">.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:disabled { opacity: 0.5; }</pre>
+            </div>
+
+            <!-- Cards -->
+            <div class="component-section">
+                <h3 class="component-title">Cards</h3>
+                <div class="cards-showcase">
+                    <!-- Basic Card -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Basic Card</h4>
+                            <p class="card-text">A simple card with title and text content.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card with Image -->
+                    <div class="card">
+                        <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Card with Image</h4>
+                            <p class="card-text">Features a top image area.</p>
+                            <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+                        </div>
+                    </div>
+
+                    <!-- Card with Header/Footer -->
+                    <div class="card">
+                        <div class="card-header">Featured</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Card with Header</h4>
+                            <p class="card-text">Includes header and footer sections.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Card -->
+                    <div class="card card-horizontal">
+                        <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Horizontal Card</h4>
+                            <p class="card-text">Image and content side by side.</p>
+                        </div>
+                    </div>
+                </div>
+                <pre class="code-snippet">.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.card-body { padding: 1rem; }
+.card-horizontal {
+  display: flex;
+  flex-direction: row;
+}</pre>
+            </div>
+
+            <!-- Forms -->
+            <div class="component-section">
+                <h3 class="component-title">Forms</h3>
+                <div class="forms-showcase">
+                    <form class="demo-form">
+                        <div class="form-group">
+                            <label class="form-label">Text Input</label>
+                            <input type="text" class="form-input" placeholder="Enter text...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Input with Icon</label>
+                            <div class="input-icon-wrapper">
+                                <span class="input-icon">🔍</span>
+                                <input type="text" class="form-input has-icon" placeholder="Search...">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="john@example.com">
+                            <small class="form-hint">We'll never share your email.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Select</label>
+                            <select class="form-select">
+                                <option>Choose an option...</option>
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Textarea</label>
+                            <textarea class="form-textarea" rows="3" placeholder="Your message..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="form-checkbox">
+                                <span class="checkbox-custom"></span>
+                                Custom Checkbox
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="radio-label">
+                                <input type="radio" name="radio-demo" class="form-radio" checked>
+                                <span class="radio-custom"></span>
+                                Option A
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="radio-demo" class="form-radio">
+                                <span class="radio-custom"></span>
+                                Option B
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Toggle Switch</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Range Slider</label>
+                            <input type="range" class="form-range" min="0" max="100" value="50">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit Form</button>
+                    </form>
+                </div>
+                <pre class="code-snippet">.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+.form-input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}</pre>
+            </div>
+
+            <!-- Table -->
+            <div class="component-section">
+                <h3 class="component-title">Tables</h3>
+                <div class="table-showcase">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="avatar avatar-sm">JD</div>
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>john@example.com</td>
+                                    <td><span class="badge badge-primary">Admin</span></td>
+                                    <td><span class="status-indicator status-active"></span> Active</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-ghost">Edit</button>
+                                        <button class="btn btn-sm btn-ghost text-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="avatar avatar-sm">AS</div>
+                                            <span>Alice Smith</span>
+                                        </div>
+                                    </td>
+                                    <td>alice@example.com</td>
+                                    <td><span class="badge badge-secondary">User</span></td>
+                                    <td><span class="status-indicator status-active"></span> Active</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-ghost">Edit</button>
+                                        <button class="btn btn-sm btn-ghost text-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="avatar avatar-sm">BW</div>
+                                            <span>Bob Wilson</span>
+                                        </div>
+                                    </td>
+                                    <td>bob@example.com</td>
+                                    <td><span class="badge badge-secondary">User</span></td>
+                                    <td><span class="status-indicator status-inactive"></span> Inactive</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-ghost">Edit</button>
+                                        <button class="btn btn-sm btn-ghost text-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <pre class="code-snippet">.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.table tr:hover { background: #f9fafb; }</pre>
+            </div>
+
+            <!-- Badges & Tags -->
+            <div class="component-section">
+                <h3 class="component-title">Badges & Tags</h3>
+                <div class="badges-showcase">
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-secondary">Secondary</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-danger">Danger</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-info">Info</span>
+                    <span class="badge badge-pill">Pill Badge</span>
+                    <span class="tag">Tag <button class="tag-close">×</button></span>
+                    <span class="tag">CSS <button class="tag-close">×</button></span>
+                    <span class="tag">Design <button class="tag-close">×</button></span>
+                </div>
+                <pre class="code-snippet">.badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+}
+.badge-pill { border-radius: 9999px; }
+.tag { display: inline-flex; gap: 0.25rem; }</pre>
+            </div>
+
+            <!-- Alerts -->
+            <div class="component-section">
+                <h3 class="component-title">Alerts</h3>
+                <div class="alerts-showcase">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Your changes have been saved.
+                    </div>
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> Something went wrong.
+                    </div>
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong> Please review your input.
+                    </div>
+                    <div class="alert alert-info">
+                        <strong>Info:</strong> New features are available.
+                    </div>
+                </div>
+                <pre class="code-snippet">.alert {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border-left: 4px solid;
+}
+.alert-success {
+  background: #d1fae5; border-color: #10b981;
+}
+.alert-danger {
+  background: #fee2e2; border-color: #ef4444;
+}</pre>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="component-section">
+                <h3 class="component-title">Progress Bars</h3>
+                <div class="progress-showcase">
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 25%;">25%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-success" style="width: 50%;">50%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-warning" style="width: 75%;">75%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-striped" style="width: 60%;">Striped</div>
+                    </div>
+                </div>
+                <pre class="code-snippet">.progress {
+  height: 1.25rem;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}</pre>
+            </div>
+
+            <!-- Tooltips -->
+            <div class="component-section">
+                <h3 class="component-title">Tooltips (Pure CSS)</h3>
+                <div class="tooltips-showcase">
+                    <button class="btn btn-secondary tooltip" data-tooltip="This is a top tooltip!">
+                        Hover Me (Top)
+                    </button>
+                    <button class="btn btn-secondary tooltip tooltip-bottom" data-tooltip="Bottom tooltip!">
+                        Hover Me (Bottom)
+                    </button>
+                    <button class="btn btn-secondary tooltip tooltip-left" data-tooltip="Left!">
+                        Left
+                    </button>
+                    <button class="btn btn-secondary tooltip tooltip-right" data-tooltip="Right!">
+                        Right
+                    </button>
+                </div>
+                <pre class="code-snippet">.tooltip {
+  position: relative;
+}
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tooltip:hover::after { opacity: 1; }</pre>
+            </div>
+
+            <!-- Modal -->
+            <div class="component-section">
+                <h3 class="component-title">Modal (Pure CSS with :target)</h3>
+                <div class="modal-showcase">
+                    <a href="#demo-modal" class="btn btn-primary">Open Modal</a>
+                </div>
+                <pre class="code-snippet">.modal { display: none; }
+.modal:target { display: flex; }
+/* Uses #id link to trigger :target */
+/* Close via href="#" or href="#!" */</pre>
+            </div>
+
+            <!-- Tabs -->
+            <div class="component-section">
+                <h3 class="component-title">Tabs (Pure CSS with :target)</h3>
+                <div class="tabs-showcase">
+                    <div class="tabs-container">
+                        <a href="#tab1" class="tab-link">Tab 1</a>
+                        <a href="#tab2" class="tab-link">Tab 2</a>
+                        <a href="#tab3" class="tab-link">Tab 3</a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="tab1" class="tab-pane">
+                            <h4>Tab 1 Content</h4>
+                            <p>This is the content for Tab 1. Pure CSS tabs using :target selector!</p>
+                        </div>
+                        <div id="tab2" class="tab-pane">
+                            <h4>Tab 2 Content</h4>
+                            <p>This is the content for Tab 2. No JavaScript needed!</p>
+                        </div>
+                        <div id="tab3" class="tab-pane">
+                            <h4>Tab 3 Content</h4>
+                            <p>This is the content for Tab 3. Amazing CSS powers!</p>
+                        </div>
+                    </div>
+                </div>
+                <pre class="code-snippet">.tab-pane { display: none; }
+.tab-pane:target { display: block; }
+/* href="#tab1" shows #tab1 */</pre>
+            </div>
+
+            <!-- Accordion -->
+            <div class="component-section">
+                <h3 class="component-title">Accordion (Pure CSS)</h3>
+                <div class="accordion-showcase">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <input type="checkbox" id="acc1" class="accordion-toggle">
+                            <label for="acc1" class="accordion-header">
+                                What is CSS?
+                                <span class="accordion-icon">+</span>
+                            </label>
+                            <div class="accordion-content">
+                                <p>CSS (Cascading Style Sheets) is a stylesheet language used to describe the
+                                    presentation of a document written in HTML. It controls layout, colors, fonts, and
+                                    more.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <input type="checkbox" id="acc2" class="accordion-toggle">
+                            <label for="acc2" class="accordion-header">
+                                What is the Box Model?
+                                <span class="accordion-icon">+</span>
+                            </label>
+                            <div class="accordion-content">
+                                <p>The CSS box model describes how elements are rendered as rectangular boxes. Each box
+                                    has content, padding, border, and margin areas.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <input type="checkbox" id="acc3" class="accordion-toggle">
+                            <label for="acc3" class="accordion-header">
+                                Flexbox vs Grid?
+                                <span class="accordion-icon">+</span>
+                            </label>
+                            <div class="accordion-content">
+                                <p>Flexbox is one-dimensional (row OR column), while Grid is two-dimensional (rows AND
+                                    columns). Use Flexbox for components, Grid for page layouts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre class="code-snippet">.accordion-toggle:checked
+  ~ .accordion-content {
+    max-height: 200px;
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+}</pre>
+            </div>
+
+            <!-- Dropdown -->
+            <div class="component-section">
+                <h3 class="component-title">Dropdown (Pure CSS with :focus-within)</h3>
+                <div class="dropdown-showcase">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle">
+                            Dropdown Menu ▼
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <pre class="code-snippet">.dropdown-menu {
+  display: none;
+  position: absolute;
+}
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+/* :focus-within activates on child focus */</pre>
+            </div>
+
+            <!-- Avatar -->
+            <div class="component-section">
+                <h3 class="component-title">Avatars</h3>
+                <div class="avatars-showcase">
+                    <div class="avatar avatar-xs">XS</div>
+                    <div class="avatar avatar-sm">SM</div>
+                    <div class="avatar">MD</div>
+                    <div class="avatar avatar-lg">LG</div>
+                    <div class="avatar avatar-xl">XL</div>
+                    <div class="avatar-group">
+                        <div class="avatar">A</div>
+                        <div class="avatar">B</div>
+                        <div class="avatar">C</div>
+                        <div class="avatar">+3</div>
+                    </div>
+                    <div class="avatar avatar-status">
+                        <span>ON</span>
+                        <span class="avatar-badge online"></span>
+                    </div>
+                </div>
+                <pre class="code-snippet">.avatar {
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-group .avatar {
+  margin-left: -0.75rem;
+}</pre>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="component-section">
+                <h3 class="component-title">Breadcrumb</h3>
+                <div class="breadcrumb-showcase">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <a href="#">Products</a>
+                        <a href="#">Electronics</a>
+                        <span>Smartphones</span>
+                    </nav>
+                </div>
+                <pre class="code-snippet">.breadcrumb a + a::before,
+.breadcrumb span::before {
+  content: "/";
+  margin: 0 0.5rem;
+  color: #9ca3af;
+}</pre>
+            </div>
+
+            <!-- Pagination -->
+            <div class="component-section">
+                <h3 class="component-title">Pagination</h3>
+                <div class="pagination-showcase">
+                    <nav class="pagination">
+                        <a href="#" class="page-link">« Prev</a>
+                        <a href="#" class="page-link">1</a>
+                        <a href="#" class="page-link active">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <span class="page-ellipsis">...</span>
+                        <a href="#" class="page-link">10</a>
+                        <a href="#" class="page-link">Next »</a>
+                    </nav>
+                </div>
+                <pre class="code-snippet">.pagination {
+  display: flex;
+  gap: 0.25rem;
+}
+.page-link {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+.page-link.active {
+  background: #3b82f6;
+  color: white;
+}</pre>
+            </div>
+
+            <!-- Skeleton Loading -->
+            <div class="component-section">
+                <h3 class="component-title">Skeleton Loading</h3>
+                <div class="skeleton-showcase">
+                    <div class="skeleton-card">
+                        <div class="skeleton skeleton-avatar"></div>
+                        <div class="skeleton-lines">
+                            <div class="skeleton skeleton-title"></div>
+                            <div class="skeleton skeleton-text"></div>
+                            <div class="skeleton skeleton-text short"></div>
+                        </div>
+                    </div>
+                </div>
+                <pre class="code-snippet">.skeleton {
+  background: linear-gradient(
+    90deg, #f0f0f0 25%,
+    #e0e0e0 50%, #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}</pre>
+            </div>
+
+            <!-- Spinner/Loader -->
+            <div class="component-section">
+                <h3 class="component-title">Spinners & Loaders</h3>
+                <div class="spinners-showcase">
+                    <div class="spinner"></div>
+                    <div class="spinner spinner-sm"></div>
+                    <div class="dots-loader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="pulse-loader"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 7: RESPONSIVE DESIGN
+        ======================================== -->
+        <section id="responsive" class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Responsive Design</h2>
+                <p>Making layouts adapt to different screen sizes</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Media Queries -->
+                <div class="demo-card demo-card-wide">
+                    <h3>Media Queries</h3>
+                    <div class="media-query-demo">
+                        <div class="responsive-box">
+                            <p>Resize your browser!</p>
+                            <span class="screen-size"></span>
+                        </div>
+                    </div>
+                    <pre class="code-snippet">/* Mobile First Approach */
+.element { font-size: 14px; }
+
+@media (min-width: 768px) {
+  .element { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .element { font-size: 18px; }
+}</pre>
+                </div>
+
+                <!-- Responsive Units -->
+                <div class="demo-card">
+                    <h3>Responsive Units</h3>
+                    <div class="responsive-units-demo">
+                        <div class="unit-rem">1rem = 16px (root font-size)</div>
+                        <div class="unit-em">1em = parent font-size</div>
+                        <div class="unit-vw-vh">vw/vh = viewport %</div>
+                        <div class="unit-clamp">clamp(1rem, 2vw, 2rem)</div>
+                    </div>
+                </div>
+
+                <!-- Container Query (Modern) -->
+                <div class="demo-card">
+                    <h3>Container Queries (Modern CSS)</h3>
+                    <div class="container-query-demo">
+                        <div class="cq-container">
+                            <div class="cq-card">
+                                <div class="cq-image"></div>
+                                <div class="cq-content">
+                                    <h4>Card Title</h4>
+                                    <p>Resize container to see layout change!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Responsive Images -->
+                <div class="demo-card">
+                    <h3>Responsive Images</h3>
+                    <div class="responsive-image-demo">
+                        <div class="img-container">
+                            <div class="img-placeholder">
+                                <p>object-fit: cover</p>
+                            </div>
+                        </div>
+                        <small>max-width: 100%; height: auto;</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 8: TRANSFORMS & ANIMATIONS
+        ======================================== -->
+        <section id="animations" class="section section-alt">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Transforms & Animations</h2>
+                <p>Adding motion and interactivity</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Transforms -->
+                <div class="demo-card">
+                    <h3>2D Transforms</h3>
+                    <div class="transforms-demo">
+                        <div class="transform-box t-translate">translate</div>
+                        <div class="transform-box t-rotate">rotate</div>
+                        <div class="transform-box t-scale">scale</div>
+                        <div class="transform-box t-skew">skew</div>
+                    </div>
+                </div>
+
+                <!-- Transitions -->
+                <div class="demo-card">
+                    <h3>Transitions</h3>
+                    <div class="transitions-demo">
+                        <div class="transition-box t-all">all 0.3s</div>
+                        <div class="transition-box t-ease">ease-in-out</div>
+                        <div class="transition-box t-cubic">cubic-bezier</div>
+                    </div>
+                    <small>Hover over the boxes!</small>
+                </div>
+
+                <!-- Keyframe Animations -->
+                <div class="demo-card demo-card-wide">
+                    <h3>Keyframe Animations</h3>
+                    <div class="keyframes-demo">
+                        <div class="anim-box a-bounce">bounce</div>
+                        <div class="anim-box a-pulse">pulse</div>
+                        <div class="anim-box a-shake">shake</div>
+                        <div class="anim-box a-spin">spin</div>
+                        <div class="anim-box a-float">float</div>
+                    </div>
+                </div>
+
+                <!-- Hover Effects -->
+                <div class="demo-card">
+                    <h3>Hover Effects</h3>
+                    <div class="hover-effects-demo">
+                        <div class="hover-box h-lift">Lift</div>
+                        <div class="hover-box h-glow">Glow</div>
+                        <div class="hover-box h-fill">Fill</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 9: ADVANCED CSS
+        ======================================== -->
+        <section id="advanced" class="section">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>Advanced CSS</h2>
+                <p>Modern CSS features and techniques</p>
+            </div>
+
+            <div class="demo-grid">
+                <!-- CSS Variables -->
+                <div class="demo-card">
+                    <h3>CSS Custom Properties</h3>
+                    <div class="variables-demo">
+                        <div class="var-box" style="--box-color: #4f46e5;">Primary</div>
+                        <div class="var-box" style="--box-color: #10b981;">Success</div>
+                        <div class="var-box" style="--box-color: #ef4444;">Danger</div>
+                    </div>
+                    <pre class="code-snippet">:root { --primary: #4f46e5; }
+.btn { background: var(--primary); }</pre>
+                </div>
+
+                <!-- Pseudo-elements -->
+                <div class="demo-card">
+                    <h3>Pseudo-elements</h3>
+                    <div class="pseudo-demo">
+                        <div class="pseudo-box before-after">Content</div>
+                        <div class="pseudo-quote">This is a styled quote</div>
+                    </div>
+                </div>
+
+                <!-- Pseudo-classes -->
+                <div class="demo-card">
+                    <h3>Pseudo-classes</h3>
+                    <ul class="pseudo-class-demo">
+                        <li>First child</li>
+                        <li>Second child</li>
+                        <li>Third child (odd)</li>
+                        <li>Fourth child</li>
+                        <li>Last child</li>
+                    </ul>
+                </div>
+
+                <!-- Filters -->
+                <div class="demo-card">
+                    <h3>CSS Filters</h3>
+                    <div class="filters-demo">
+                        <div class="filter-box f-blur">blur</div>
+                        <div class="filter-box f-grayscale">grayscale</div>
+                        <div class="filter-box f-brightness">brightness</div>
+                        <div class="filter-box f-hue">hue-rotate</div>
+                    </div>
+                </div>
+
+                <!-- Gradients -->
+                <div class="demo-card">
+                    <h3>Gradients</h3>
+                    <div class="gradients-demo">
+                        <div class="gradient-box g-linear">linear</div>
+                        <div class="gradient-box g-radial">radial</div>
+                        <div class="gradient-box g-conic">conic</div>
+                    </div>
+                </div>
+
+                <!-- Clip-path -->
+                <div class="demo-card">
+                    <h3>Clip-path</h3>
+                    <div class="clippath-demo">
+                        <div class="clip-box clip-circle"></div>
+                        <div class="clip-box clip-polygon"></div>
+                        <div class="clip-box clip-ellipse"></div>
+                    </div>
+                </div>
+
+                <!-- Blend Modes -->
+                <div class="demo-card">
+                    <h3>Blend Modes</h3>
+                    <div class="blend-demo">
+                        <div class="blend-box">
+                            <div class="blend-overlay"></div>
+                        </div>
+                    </div>
+                    <small>mix-blend-mode: multiply</small>
+                </div>
+
+                <!-- Aspect Ratio -->
+                <div class="demo-card">
+                    <h3>Aspect Ratio</h3>
+                    <div class="aspect-demo">
+                        <div class="aspect-box ar-16-9">16:9</div>
+                        <div class="aspect-box ar-1-1">1:1</div>
+                        <div class="aspect-box ar-4-3">4:3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Component -->
+    <div id="demo-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Modal Title</h3>
+                <a href="#" class="modal-close">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>This modal is created using pure CSS with the :target selector. No JavaScript required!</p>
+                <p>Click the × button or outside to close.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-ghost">Cancel</a>
+                <button class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button (Fixed Position) -->
+    <a href="#" class="back-to-top" title="Back to Top">↑</a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>CSS Master</h4>
+                <p>A comprehensive CSS learning reference covering all essential concepts from basics to advanced
+                    techniques.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#box-model">Box Model</a></li>
+                    <li><a href="#flexbox">Flexbox</a></li>
+                    <li><a href="#grid">CSS Grid</a></li>
+                    <li><a href="#components">Components</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN CSS Docs</a></li>
+                    <li><a href="https://css-tricks.com" target="_blank">CSS Tricks</a></li>
+                    <li><a href="https://web.dev/learn/css" target="_blank">Web.dev CSS</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CSS Learning Reference. Built with ❤️ and Vanilla CSS.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

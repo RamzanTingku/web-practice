@@ -1,0 +1,657 @@
+/* TaskFlow UI (Pure HTML/CSS)
+   Goal: clean, consistent, accessible, responsive defaults.
+*/
+
+:root {
+  color-scheme: light; /* Hint to the browser: this site is designed for light theme (affects form controls, etc.). */
+
+  /* Colors (design tokens: reuse everywhere instead of hard-coding colors) */
+  --bg: #ffffff; /* Page background */
+  --surface: #f8fafc; /* Subtle section background / surfaces */
+  --text: #0f172a; /* Main text color */
+  --muted: #475569; /* Secondary text */
+  --border: #e2e8f0; /* Borders + dividers */
+
+  --primary: #2563eb; /* Primary brand color (buttons/links) */
+  --primary-contrast: #ffffff; /* Text color on primary background */
+  --danger: #dc2626; /* Destructive actions (delete) */
+  --success: #16a34a; /* Success state */
+
+  /* Radii (rounded corners) */
+  --radius-sm: 10px; /* Small rounding */
+  --radius-md: 14px; /* Default card rounding */
+
+  /* Spacing scale (use these to keep spacing consistent; mostly 8px rhythm) */
+  --s-1: 4px; /* Tiny */
+  --s-2: 8px; /* Small */
+  --s-3: 12px; /* Small+ */
+  --s-4: 16px; /* Base */
+  --s-5: 24px; /* Medium */
+  --s-6: 32px; /* Large */
+  --s-7: 48px; /* Section */
+  --s-8: 64px; /* Hero */
+
+  /* Type (typography tokens) */
+  /* Font stack: prefers system UI fonts for a native look and fast loading. */
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --text-sm: 0.925rem; /* Small text */
+  --text-base: 1rem; /* Base body size */
+  --text-lg: 1.125rem; /* Lead text */
+  --text-xl: 1.375rem; /* Card titles / KPI sizes */
+  --text-2xl: 1.875rem; /* Section titles */
+  --text-3xl: 2.25rem; /* Page title (h1) */
+  --line: 1.55; /* Default line-height for readability */
+
+  /* Layout */
+  --container: 1100px; /* Max readable content width */
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.07); /* Soft shadow for elevation */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Makes width/height include padding + border (more predictable sizing). */
+}
+
+html,
+body {
+  height: 100%; /* Allows layouts that rely on full viewport height. */
+}
+
+body {
+  margin: 0; /* Remove default browser margins */
+  font-family: var(--font); /* Use our font token */
+  line-height: var(--line); /* Use our line-height token */
+  background: var(--bg); /* Page background */
+  color: var(--text); /* Default text color */
+}
+
+img {
+  max-width: 100%; /* Responsive images: never overflow their container */
+  display: block; /* Removes inline-image baseline gap */
+}
+
+a {
+  color: inherit; /* Links inherit text color (we style links via hover/structure). */
+}
+
+p {
+  margin: 0; /* Reset default paragraph margin */
+  color: var(--muted); /* Body paragraphs are slightly muted by default */
+}
+
+h1,
+h2,
+h3 {
+  margin: 0; /* Reset heading margins so spacing is controlled by layout utilities */
+  line-height: 1.2; /* Tighter headings */
+  letter-spacing: -0.02em; /* Slightly tighter tracking for large text */
+  color: var(--text); /* Heading color */
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+small {
+  color: var(--muted); /* Fine print uses muted color */
+}
+
+/* Accessibility */
+.skip-link {
+  /* “Skip to content” appears when focused (keyboard users). */
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: var(--s-2) var(--s-4);
+  background: var(--text);
+  color: var(--bg);
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  left: var(--s-4);
+  top: var(--s-4);
+}
+
+:focus-visible {
+  /* Visible focus ring for keyboard navigation (don’t remove this). */
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Layout primitives */
+.container {
+  /* A centered max-width wrapper used across all pages. */
+  width: min(var(--container), calc(100% - 2 * var(--s-5)));
+  margin-inline: auto;
+}
+
+.stack {
+  /* Vertical layout helper: places children in a column with consistent gaps. */
+  display: grid;
+  gap: var(--s-4);
+}
+
+.stack-lg {
+  gap: var(--s-6);
+}
+
+.section {
+  /* Standard vertical padding for page sections. */
+  padding-block: var(--s-7);
+}
+
+.surface {
+  /* Light background used to visually separate sections. */
+  background: var(--surface);
+}
+
+.card {
+  /* Reusable surface: border + radius + shadow. */
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.card__body {
+  padding: var(--s-5);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+hr.sep {
+  /* Divider line (we reset default hr styling). */
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Header / Nav */
+.header {
+  /* Sticky header stays visible while scrolling. */
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-4);
+}
+
+.brand {
+  display: inline-flex;
+  gap: var(--s-2);
+  align-items: center;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand__mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--text);
+}
+
+.nav__links {
+  /* Hidden on mobile; shown at >= 720px. */
+  display: none;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.nav__links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.nav__links a:hover {
+  color: var(--text);
+}
+
+.nav__menu {
+  /* Mobile menu wrapper for <details>. */
+  position: relative;
+}
+
+.nav__menu > summary {
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--s-2) var(--s-3);
+  background: var(--bg);
+  font-size: var(--text-sm);
+}
+
+.nav__menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav__menu[open] > summary {
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.nav__menu-panel {
+  /* Dropdown panel that appears under the mobile menu. */
+  position: absolute;
+  right: 0;
+  margin-top: var(--s-2);
+  width: min(320px, calc(100vw - 2 * var(--s-5)));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  padding: var(--s-3);
+  display: grid;
+  gap: var(--s-2);
+}
+
+.nav__menu-panel a {
+  text-decoration: none;
+  padding: var(--s-3);
+  border-radius: 12px;
+  color: var(--text);
+}
+
+.nav__menu-panel a:hover {
+  background: var(--surface);
+}
+
+/* Buttons */
+.btn {
+  /* Base button style (used for both <a> and <button>). */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.btn--ghost {
+  background: transparent;
+}
+
+.btn--danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Hero */
+.hero {
+  /* Hero gets extra vertical padding to feel “big”. */
+  padding-block: var(--s-8);
+}
+
+.hero__grid {
+  /* Grid lets us switch from single column (mobile) to 2 columns (desktop). */
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+}
+
+.hero__lead {
+  font-size: var(--text-lg);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+.hero__panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, var(--surface), var(--bg));
+  padding: var(--s-5);
+  box-shadow: var(--shadow);
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+.kpi {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: var(--s-4);
+  background: var(--bg);
+}
+
+.kpi__value {
+  font-weight: 800;
+  font-size: var(--text-xl);
+  color: var(--text);
+}
+
+/* Feature grid */
+.grid {
+  /* Generic grid helper for section cards. */
+  display: grid;
+  gap: var(--s-4);
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+.feature {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  padding: var(--s-5);
+}
+
+.feature p {
+  margin-top: var(--s-2);
+}
+
+/* Pricing */
+.pricing {
+  /* Pricing grid becomes 3 columns at >= 720px. */
+  display: grid;
+  gap: var(--s-4);
+}
+
+.price {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--text);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* FAQ */
+.faq {
+  /* FAQ is a simple vertical stack of <details> items. */
+  display: grid;
+  gap: var(--s-3);
+}
+
+.faq details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  padding: var(--s-4);
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Forms */
+.form {
+  /* Form layout: vertical spacing between fields. */
+  display: grid;
+  gap: var(--s-4);
+}
+
+.field {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.label {
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
+.input,
+.select {
+  /* Shared styling for text inputs and selects. */
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.help {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.error {
+  font-size: 0.9rem;
+  color: var(--danger);
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+
+/* Alerts */
+.alert {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: var(--s-4);
+}
+
+.alert--success {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+.alert--danger {
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+/* Tables */
+.table-wrap {
+  /* Allows horizontal scroll on small screens (tables often overflow). */
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-sm);
+}
+
+.table th {
+  color: var(--muted);
+  font-weight: 700;
+  background: var(--surface);
+}
+
+/* Footer */
+.footer {
+  /* Footer uses muted text and a top border for separation. */
+  border-top: 1px solid var(--border);
+  padding-block: var(--s-6);
+  color: var(--muted);
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.footer a:hover {
+  color: var(--text);
+}
+
+/* Dashboard layout */
+.app {
+  /* Fill viewport height minus header height (approx). */
+  min-height: calc(100vh - 73px);
+}
+
+.app__grid {
+  /* One column on mobile; becomes sidebar + content at >= 980px. */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  padding-block: var(--s-6);
+}
+
+.sidebar {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.sidebar__body {
+  padding: var(--s-4);
+  display: grid;
+  gap: var(--s-2);
+}
+
+.sidebar a {
+  text-decoration: none;
+  padding: var(--s-3);
+  border-radius: 12px;
+  color: var(--text);
+}
+
+.sidebar a:hover {
+  background: var(--surface);
+}
+
+.sidebar a[aria-current="page"] {
+  /* Highlight the active page link (matches aria-current="page" in HTML). */
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.content {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.stats {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+}
+
+/* Responsive */
+@media (min-width: 720px) {
+  /* Tablet and up: show desktop nav, switch sections to multi-column. */
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  .nav__links {
+    display: flex;
+  }
+
+  .nav__menu {
+    display: none;
+  }
+
+  .hero__grid {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pricing {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer__grid {
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: start;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  /* Desktop: two-column dashboard layout (sidebar + main content). */
+  .app__grid {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+}

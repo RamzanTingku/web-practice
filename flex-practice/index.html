@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flexbox Practice · Flex Play</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Simple header / nav using flex row -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Flex Play</a>
+      <nav class="nav">
+        <a href="#center">Centering</a>
+        <a href="#wrap">Wrapping</a>
+        <a href="#order">Ordering</a>
+        <a href="#sidebar">Sidebar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <!-- Centering demo: vertical + horizontal centering with flex -->
+    <section id="center" class="demo card">
+      <h2>Centering (align-items / justify-content)</h2>
+      <div class="demo-area demo-center">
+        <div class="box">Centered</div>
+      </div>
+      <p class="notes">This container uses <code>display: flex</code> and centers its child both axes.</p>
+    </section>
+
+    <!-- Horizontal nav-like list using flex with gap -->
+    <section id="wrap" class="demo card">
+      <h2>Wrapping (flex-wrap)</h2>
+      <div class="demo-area demo-wrap">
+        <!-- many boxes to force wrapping -->
+        <div class="chip">One</div>
+        <div class="chip">Two</div>
+        <div class="chip">Three</div>
+        <div class="chip">Four</div>
+        <div class="chip">Five</div>
+        <div class="chip">Six</div>
+        <div class="chip">Seven</div>
+      </div>
+      <p class="notes">Use <code>flex-wrap: wrap</code> so items move to next line instead of overflowing.</p>
+    </section>
+
+    <!-- Ordering + grow/shrink demo -->
+    <section id="order" class="demo card">
+      <h2>Ordering &amp; Flex Grow</h2>
+      <div class="demo-area demo-order">
+        <div class="item" style="order: 2; flex: 0 0 120px;">Fixed</div>
+        <div class="item" style="order: 3; flex: 1 1 0;">Flexible (grows)</div>
+        <div class="item" style="order: 1; flex: 0 0 90px;">First (order:1)</div>
+      </div>
+      <p class="notes">`flex: 1 1 0` lets the item grow to fill leftover space. `order` changes visual order.</p>
+    </section>
+
+    <!-- Sidebar + content layout using flex row -->
+    <section id="sidebar" class="demo card">
+      <h2>Sidebar Layout</h2>
+      <div class="demo-area demo-sidebar">
+        <aside class="side">Sidebar (fixed)</aside>
+        <div class="content-area">
+          <h3>Content area</h3>
+          <p>Content grows and scrolls. Sidebar stays fixed width because it has <code>flex: 0 0 220px</code>.</p>
+          <div class="row-cards">
+            <div class="card-mini">A</div>
+            <div class="card-mini">B</div>
+            <div class="card-mini">C</div>
+          </div>
+        </div>
+      </div>
+      <p class="notes">Common dashboard layout: parent is a flex row; sidebar is fixed, content is flexible.</p>
+    </section>
+
+    <!-- Align-self demo to show per-item alignment -->
+    <section id="align" class="demo card">
+      <h2>Align-self (per-item)</h2>
+      <div class="demo-area demo-align">
+        <div class="tall">Tall</div>
+        <div class="mid" style="align-self: center;">Center</div>
+        <div class="short" style="align-self: flex-end;">Bottom</div>
+      </div>
+      <p class="notes">Use <code>align-self</code> to override the container's alignment for a single item.</p>
+    </section>
+
+    <!-- Practical inline form example using flex -->
+    <section id="form" class="demo card">
+      <h2>Inline Form</h2>
+      <form class="demo-area demo-form" action="#">
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com">
+        <button class="btn-primary" type="submit">Subscribe</button>
+      </form>
+      <p class="notes">Forms often use flex to keep input + button on one row with responsive behavior.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Flex practice project — style-only. Modify <code>style.css</code> to experiment.</p>
+    </div>
+  </footer>
+</body>
+</html>

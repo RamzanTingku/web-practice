@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project · TaskFlow</title>
+    <meta name="description" content="Project detail UI." />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!--
+      Keyword notes:
+      - aria-current="page": marks the active nav link.
+      - aria-label: accessible name for important layout regions.
+      - <details>/<summary>: native open/close menu.
+      - role="menu" / role="menuitem": menu semantics (demo).
+    -->
+
+    <header class="header">
+      <div class="container nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>TaskFlow</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary links">
+          <a href="projects.html">Projects</a>
+          <a href="settings.html">Settings</a>
+          <a class="btn btn--ghost" href="../auth/sign-in.html">Sign out</a>
+        </nav>
+
+        <details class="nav__menu">
+          <summary aria-label="Open menu">Menu</summary>
+          <div class="nav__menu-panel" role="menu">
+            <a role="menuitem" href="projects.html">Projects</a>
+            <a role="menuitem" href="settings.html">Settings</a>
+            <hr class="sep" />
+            <a role="menuitem" class="btn" href="../auth/sign-in.html">Sign out</a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <div class="app">
+      <div class="container app__grid">
+        <aside class="sidebar" aria-label="Sidebar">
+          <div class="sidebar__body">
+            <a href="index.html">Overview</a>
+            <a href="projects.html">Projects</a>
+            <a aria-current="page" href="project.html">Project detail</a>
+            <a href="settings.html">Settings</a>
+          </div>
+        </aside>
+
+        <main id="main" class="content" aria-label="Dashboard content">
+          <section class="card">
+            <div class="topbar">
+              <div class="stack" style="gap: 6px;">
+                <h1>Project detail</h1>
+                <p>Practice tabs, cards, and information layout.</p>
+              </div>
+              <div class="inline">
+                <a class="btn" href="projects.html">Back</a>
+                <a class="btn btn--danger" href="#">Archive</a>
+              </div>
+            </div>
+
+            <div class="card__body content">
+              <section class="grid grid--3" aria-label="Project info">
+                <div class="feature">
+                  <h3>Owner</h3>
+                  <p>Ramzan</p>
+                </div>
+                <div class="feature">
+                  <h3>Status</h3>
+                  <p><span class="badge">Active</span></p>
+                </div>
+                <div class="feature">
+                  <h3>Due</h3>
+                  <p>Jan 15</p>
+                </div>
+              </section>
+
+              <section class="card" style="box-shadow: none;">
+                <div class="card__body stack">
+                  <div class="inline" style="gap: 12px; flex-wrap: wrap;">
+                    <a class="btn btn--primary" href="#">Overview</a>
+                    <a class="btn" href="#">Tasks</a>
+                    <a class="btn" href="#">Files</a>
+                    <a class="btn" href="#">Activity</a>
+                  </div>
+                  <p>
+                    This section is a placeholder for tab content.
+                    Your job is to keep spacing consistent and avoid “random margins”.
+                  </p>
+                </div>
+              </section>
+
+              <section class="stack" aria-label="Quick edit">
+                <h2 style="font-size: var(--text-xl);">Quick edit</h2>
+                <form class="form" action="#" method="post" novalidate>
+                  <div class="field">
+                    <label class="label" for="title">Project title</label>
+                    <input class="input" id="title" name="title" type="text" value="Dashboard UI" required />
+                  </div>
+
+                  <div class="field">
+                    <label class="label" for="status">Status</label>
+                    <select class="select" id="status" name="status">
+                      <option>Planned</option>
+                      <option selected>Active</option>
+                      <option>In progress</option>
+                      <option>Done</option>
+                    </select>
+                  </div>
+
+                  <div class="inline">
+                    <button class="btn btn--primary" type="submit">Save</button>
+                    <button class="btn" type="reset">Reset</button>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="stack">
+          <a class="brand" href="../index.html">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span>TaskFlow</span>
+          </a>
+          <small>Project detail scaffold.</small>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <strong>Dashboard</strong>
+          <a href="index.html">Overview</a>
+          <a href="projects.html">Projects</a>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <strong>Account</strong>
+          <a href="../auth/sign-in.html">Sign in</a>
+          <a href="../auth/sign-up.html">Sign up</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

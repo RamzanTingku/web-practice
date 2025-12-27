@@ -1,0 +1,600 @@
+/**
+ * Tailwind CSS Learning Reference - Custom Styles
+ * Part of the Comparative Learning Web Design Suite
+ * 
+ * These styles supplement Tailwind CSS with:
+ * - CSS-only interactivity (theme toggle, mobile menu, modal)
+ * - Custom scrollbar styling
+ * - Selection color customization
+ * - Print styles
+ * - Additional animations
+ * - Utility classes not in Tailwind
+ */
+
+/* ============================================
+   CSS-ONLY THEME TOGGLE
+   Uses :has() selector (modern browsers)
+============================================ */
+/* When theme checkbox is checked, apply dark mode styles */
+body:has(#theme-toggle:checked) {
+    background-color: #111827; /* gray-900 */
+    color: #f3f4f6; /* gray-100 */
+}
+
+body:has(#theme-toggle:checked) nav {
+    background-color: rgba(17, 24, 39, 0.8);
+    border-color: #374151;
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label {
+    color: #d1d5db;
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label:hover {
+    background-color: #1f2937;
+}
+
+/* Toggle icon visibility based on theme */
+body:has(#theme-toggle:checked) .theme-icon-moon {
+    display: none;
+}
+
+body:has(#theme-toggle:checked) .theme-icon-sun {
+    display: block;
+}
+
+/* Dark mode for cards and components */
+body:has(#theme-toggle:checked) .bg-white {
+    background-color: #1f2937 !important;
+}
+
+body:has(#theme-toggle:checked) .border-gray-200 {
+    border-color: #374151 !important;
+}
+
+body:has(#theme-toggle:checked) .text-gray-900 {
+    color: #f9fafb !important;
+}
+
+body:has(#theme-toggle:checked) .text-gray-600 {
+    color: #9ca3af !important;
+}
+
+body:has(#theme-toggle:checked) .text-gray-500 {
+    color: #9ca3af !important;
+}
+
+body:has(#theme-toggle:checked) .bg-gray-100 {
+    background-color: #374151 !important;
+}
+
+body:has(#theme-toggle:checked) .bg-gray-50 {
+    background-color: #111827 !important;
+}
+
+/* ============================================
+   CSS-ONLY MOBILE MENU
+   Uses :has() selector with checkbox
+============================================ */
+/* Show mobile menu when checkbox is checked */
+body:has(#mobile-menu-toggle:checked) .mobile-menu {
+    display: block !important;
+    max-height: 500px;
+}
+
+/* Toggle hamburger/close icons */
+body:has(#mobile-menu-toggle:checked) .menu-icon-open {
+    display: none;
+}
+
+body:has(#mobile-menu-toggle:checked) .menu-icon-close {
+    display: block;
+}
+
+/* Dark mode for mobile menu */
+body:has(#theme-toggle:checked) .mobile-menu {
+    background-color: #111827;
+    border-color: #374151;
+}
+
+body:has(#theme-toggle:checked) .mobile-menu a {
+    color: #d1d5db;
+}
+
+body:has(#theme-toggle:checked) .mobile-menu a:hover {
+    background-color: #1f2937;
+}
+
+/* ============================================
+   CSS-ONLY MODAL (using :target)
+============================================ */
+#css-modal {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#css-modal:target {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#css-modal > div:last-child {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+#css-modal:target > div:last-child {
+    transform: scale(1);
+}
+
+/* Dark mode for modal */
+body:has(#theme-toggle:checked) #css-modal .bg-white {
+    background-color: #1f2937 !important;
+}
+
+body:has(#theme-toggle:checked) #css-modal .text-gray-900 {
+    color: #f9fafb !important;
+}
+
+body:has(#theme-toggle:checked) #css-modal .text-gray-600 {
+    color: #9ca3af !important;
+}
+
+body:has(#theme-toggle:checked) #css-modal .text-gray-700 {
+    color: #d1d5db !important;
+}
+
+body:has(#theme-toggle:checked) #css-modal .border-gray-200 {
+    border-color: #374151 !important;
+}
+
+/* ============================================
+   CSS-ONLY BACK TO TOP
+   Uses scroll-driven animations (modern CSS)
+============================================ */
+@supports (animation-timeline: scroll()) {
+    .back-to-top {
+        animation: show-back-to-top linear both;
+        animation-timeline: scroll();
+        animation-range: 200px 400px;
+    }
+    
+    @keyframes show-back-to-top {
+        from {
+            opacity: 0;
+            pointer-events: none;
+        }
+        to {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+}
+
+/* Fallback: Always show back to top after some scroll (basic CSS) */
+@supports not (animation-timeline: scroll()) {
+    .back-to-top {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+============================================ */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Dark mode scrollbar (CSS-only) */
+body:has(#theme-toggle:checked) ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+body:has(#theme-toggle:checked) ::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+body:has(#theme-toggle:checked) ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Firefox scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 #f1f5f9;
+}
+
+body:has(#theme-toggle:checked) {
+    scrollbar-color: #475569 #1e293b;
+}
+
+/* ============================================
+   CODE SNIPPET STYLING
+============================================ */
+.code-snippet {
+    background: #1f2937;
+    color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.875rem;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.code-snippet code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+}
+
+/* ============================================
+   SELECTION COLORS
+============================================ */
+::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: inherit;
+}
+
+body:has(#theme-toggle:checked) ::selection {
+    background-color: rgba(96, 165, 250, 0.3);
+}
+
+/* ============================================
+   FOCUS VISIBLE STYLES
+============================================ */
+:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+body:has(#theme-toggle:checked) :focus-visible {
+    outline-color: #60a5fa;
+}
+
+/* Remove default focus for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ============================================
+   SMOOTH SCROLL
+============================================ */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   ADDITIONAL ANIMATIONS
+============================================ */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+}
+
+/* ============================================
+   SKELETON LOADING
+============================================ */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #e2e8f0 0%,
+        #f1f5f9 50%,
+        #e2e8f0 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.dark .skeleton {
+    background: linear-gradient(
+        90deg,
+        #374151 0%,
+        #4b5563 50%,
+        #374151 100%
+    );
+}
+
+/* ============================================
+   CODE BLOCKS
+============================================ */
+code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', 'Liberation Mono', monospace;
+}
+
+pre {
+    overflow-x: auto;
+}
+
+/* ============================================
+   DETAILS/SUMMARY (Accordion)
+============================================ */
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary {
+    list-style: none;
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+============================================ */
+/* Text balance for better headings */
+.text-balance {
+    text-wrap: balance;
+}
+
+/* Text pretty for better paragraphs */
+.text-pretty {
+    text-wrap: pretty;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Aspect ratios for older browsers */
+.aspect-square {
+    aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+/* ============================================
+   PRINT STYLES
+============================================ */
+@media print {
+    nav,
+    #backToTop,
+    #modal,
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000;
+        background: #fff;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        color: #000;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   TABLE ENHANCEMENTS
+============================================ */
+table {
+    border-collapse: collapse;
+}
+
+/* Sortable table header indicator */
+th[data-sortable] {
+    cursor: pointer;
+}
+
+th[data-sortable]:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark th[data-sortable]:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   FORM ENHANCEMENTS
+============================================ */
+/* Autofill background fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: inherit;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Number input spinner hide */
+input[type="number"].no-spinner::-webkit-outer-spin-button,
+input[type="number"].no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"].no-spinner {
+    -moz-appearance: textfield;
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ============================================
+   GLASS EFFECT (for supported browsers)
+============================================ */
+@supports (backdrop-filter: blur(10px)) {
+    .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .dark .glass {
+        background: rgba(17, 24, 39, 0.7);
+    }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    .glass {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .dark .glass {
+        background: rgba(17, 24, 39, 0.95);
+    }
+}
+
+/* ============================================
+   DARK MODE TRANSITION
+============================================ */
+html.dark {
+    color-scheme: dark;
+}
+
+/* Smooth dark mode transition */
+html {
+    transition: background-color 0.3s ease;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

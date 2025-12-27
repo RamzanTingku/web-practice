@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings · TaskFlow</title>
+    <meta name="description" content="Settings UI." />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!--
+      Keyword notes:
+      - aria-current="page": indicates the current page in navigation.
+      - aria-label: accessible name for regions like sidebar/content.
+      - <details>/<summary>: native open/close toggle.
+      - role="menu" / role="menuitem": menu semantics (demo).
+    -->
+
+    <header class="header">
+      <div class="container nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>TaskFlow</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary links">
+          <a href="projects.html">Projects</a>
+          <a href="settings.html">Settings</a>
+          <a class="btn btn--ghost" href="../auth/sign-in.html">Sign out</a>
+        </nav>
+
+        <details class="nav__menu">
+          <summary aria-label="Open menu">Menu</summary>
+          <div class="nav__menu-panel" role="menu">
+            <a role="menuitem" href="projects.html">Projects</a>
+            <a role="menuitem" href="settings.html">Settings</a>
+            <hr class="sep" />
+            <a role="menuitem" class="btn" href="../auth/sign-in.html">Sign out</a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <div class="app">
+      <div class="container app__grid">
+        <aside class="sidebar" aria-label="Sidebar">
+          <div class="sidebar__body">
+            <a href="index.html">Overview</a>
+            <a href="projects.html">Projects</a>
+            <a href="project.html">Project detail</a>
+            <a aria-current="page" href="settings.html">Settings</a>
+          </div>
+        </aside>
+
+        <main id="main" class="content" aria-label="Dashboard content">
+          <section class="card">
+            <div class="topbar">
+              <div class="stack" style="gap: 6px;">
+                <h1>Settings</h1>
+                <p>Form-heavy page to practice spacing, focus, and states.</p>
+              </div>
+              <span class="badge">UI only</span>
+            </div>
+
+            <div class="card__body content">
+              <section class="stack" aria-label="Profile">
+                <h2 style="font-size: var(--text-xl);">Profile</h2>
+                <form class="form" action="#" method="post" novalidate>
+                  <div class="grid" style="grid-template-columns: 1fr; gap: var(--s-4);">
+                    <div class="field">
+                      <label class="label" for="name">Name</label>
+                      <input class="input" id="name" name="name" type="text" value="Ramzan" />
+                    </div>
+
+                    <div class="field">
+                      <label class="label" for="email">Email</label>
+                      <input class="input" id="email" name="email" type="email" value="ramzan@example.com" />
+                    </div>
+
+                    <div class="field">
+                      <label class="label" for="timezone">Timezone</label>
+                      <select class="select" id="timezone" name="timezone">
+                        <option selected>Asia/Karachi</option>
+                        <option>UTC</option>
+                        <option>Europe/London</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="inline">
+                    <button class="btn btn--primary" type="submit">Save changes</button>
+                    <button class="btn" type="reset">Reset</button>
+                  </div>
+                </form>
+              </section>
+
+              <hr class="sep" />
+
+              <section class="stack" aria-label="Notifications">
+                <h2 style="font-size: var(--text-xl);">Notifications</h2>
+                <div class="card" style="box-shadow: none;">
+                  <div class="card__body stack">
+                    <label class="inline" for="email-notifs">
+                      <input id="email-notifs" type="checkbox" checked />
+                      <span class="muted">Email updates</span>
+                    </label>
+                    <label class="inline" for="product-notifs">
+                      <input id="product-notifs" type="checkbox" />
+                      <span class="muted">Product announcements</span>
+                    </label>
+                    <label class="inline" for="security-notifs">
+                      <input id="security-notifs" type="checkbox" checked />
+                      <span class="muted">Security alerts</span>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <hr class="sep" />
+
+              <section class="stack" aria-label="Danger zone">
+                <h2 style="font-size: var(--text-xl);">Danger zone</h2>
+                <div class="alert alert--danger" role="alert">
+                  <strong>Delete account</strong>
+                  <div class="muted">UI practice: danger buttons + alert styling.</div>
+                  <div style="margin-top: 12px;">
+                    <a class="btn btn--danger" href="#">Delete account</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="stack">
+          <a class="brand" href="../index.html">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span>TaskFlow</span>
+          </a>
+          <small>Settings scaffold.</small>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <strong>Dashboard</strong>
+          <a href="index.html">Overview</a>
+          <a href="projects.html">Projects</a>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <strong>Account</strong>
+          <a href="../auth/sign-in.html">Sign in</a>
+          <a href="../auth/sign-up.html">Sign up</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

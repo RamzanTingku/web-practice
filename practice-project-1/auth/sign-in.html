@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In · TaskFlow</title>
+    <meta name="description" content="Sign in to TaskFlow." />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!--
+      Quick keyword notes:
+      - aria-label: accessible name for an element.
+      - aria-hidden="true": hide decorative elements from screen readers.
+      - role="menu" / role="menuitem": describes a menu pattern (demo).
+      - role="status" / role="alert": announcements for assistive tech.
+      - <details>/<summary>: native open/close toggle (no JS).
+    -->
+
+    <header class="header">
+      <div class="container nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>TaskFlow</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary links">
+          <a href="../index.html#features">Features</a>
+          <a href="../index.html#pricing">Pricing</a>
+          <a href="../index.html#faq">FAQ</a>
+          <a class="btn btn--ghost" href="sign-up.html">Create account</a>
+          <a class="btn btn--primary" href="../dashboard/index.html">Open dashboard</a>
+        </nav>
+
+        <details class="nav__menu">
+          <summary aria-label="Open menu">Menu</summary>
+          <div class="nav__menu-panel" role="menu">
+            <a role="menuitem" href="../index.html#features">Features</a>
+            <a role="menuitem" href="../index.html#pricing">Pricing</a>
+            <a role="menuitem" href="../index.html#faq">FAQ</a>
+            <hr class="sep" />
+            <a role="menuitem" class="btn" href="sign-up.html">Create account</a>
+            <a role="menuitem" class="btn btn--primary" href="../dashboard/index.html">Open dashboard</a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="card" style="max-width: 520px; margin-inline: auto;">
+          <div class="card__body stack">
+            <div class="stack" style="gap: 8px;">
+              <h1>Welcome back</h1>
+              <p>Sign in to continue to your dashboard.</p>
+            </div>
+
+            <div class="alert" role="status">
+              <strong>Practice note:</strong>
+              <span class="muted">This is UI-only. Later you’ll connect a real auth API.</span>
+            </div>
+
+            <form class="form" action="#" method="post" novalidate>
+              <div class="field">
+                <label class="label" for="email">Email</label>
+                <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+                <small class="help">Use a valid email format.</small>
+              </div>
+
+              <div class="field">
+                <label class="label" for="password">Password</label>
+                <input
+                  class="input"
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="••••••••"
+                  required
+                />
+                <small class="help">At least 8 characters (UI demo).</small>
+              </div>
+
+              <div class="inline" style="justify-content: space-between;">
+                <label class="inline" for="remember">
+                  <input id="remember" name="remember" type="checkbox" />
+                  <span class="muted">Remember me</span>
+                </label>
+                <a class="muted" href="#">Forgot password?</a>
+              </div>
+
+              <button class="btn btn--primary" type="submit">Sign in</button>
+
+              <p class="muted">
+                Don’t have an account?
+                <a href="sign-up.html">Create one</a>
+              </p>
+
+              <hr class="sep" />
+
+              <div class="stack" style="gap: 8px;">
+                <small class="muted">Example error state:</small>
+                <div class="field">
+                  <input class="input" aria-invalid="true" value="" placeholder="Invalid field preview" />
+                  <!-- role="alert" is used for urgent validation messages. -->
+                  <div class="error" role="alert">This field is required.</div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="stack">
+          <a class="brand" href="../index.html">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span>TaskFlow</span>
+          </a>
+          <small>Pure HTML/CSS practice scaffold.</small>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <strong>Project</strong>
+          <a href="../index.html#features">Features</a>
+          <a href="../index.html#pricing">Pricing</a>
+        </div>
+        <div class="stack" style="gap: 8px;">
+          <strong>Account</strong>
+          <a href="sign-in.html">Sign in</a>
+          <a href="sign-up.html">Sign up</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TaskFlow · Design Practice (HTML/CSS)</title>
+        <meta name="description" content="A design-first practice project scaffold built with pure HTML and CSS." />
+        <link rel="stylesheet" href="assets/css/styles.css" />
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="header">
+                        <!--
+                            Accessibility notes (keywords you’ll see a lot):
+
+                            - aria-label="...": Gives an element an accessible name for screen readers.
+                                Use it when the element’s purpose isn’t clearly described by visible text.
+
+                            - aria-hidden="true": Hides purely decorative elements from screen readers
+                            <html lang="en">
+                                <!-- lang="en" helps browsers + screen readers know the page language. -->
+                                <head>
+                                    <meta charset="UTF-8" />
+                                    <!-- charset sets text encoding; UTF-8 supports almost all languages/symbols. -->
+
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                                    <!-- viewport makes the page responsive on mobile (don’t remove this). -->
+
+                                    <title>TaskFlow · Design Practice (HTML/CSS)</title>
+                                    <!-- title shows in the browser tab + helps SEO. -->
+
+                                    <meta name="description" content="A design-first practice project scaffold built with pure HTML and CSS." />
+                                    <!-- description is used by search engines and link previews. -->
+
+                                    <link rel="stylesheet" href="assets/css/styles.css" />
+                                    <!-- links your shared CSS file (one design system for all pages). -->
+                                </head>
+
+                                <body>
+                                    <a class="skip-link" href="#main">Skip to content</a>
+                                    <!-- skip link helps keyboard users jump directly to main content. -->
+
+                                    <header class="header">
+                                        <!-- header = the top part of the page (usually nav + branding). -->
+
+                                        <div class="container nav" aria-label="Primary">
+                                            <!--
+                                                container centers content with a max width.
+                                                aria-label gives this region an accessible name (“Primary”).
+                                            -->
+
+                                            <a class="brand" href="index.html">
+                                                <!-- brand is a link back to home (common website pattern). -->
+                                                <span class="brand__mark" aria-hidden="true"></span>
+                                                <!-- aria-hidden hides a decorative mark from screen readers. -->
+                                                <span>TaskFlow</span>
+                                                <!-- visible brand name. -->
+                                            </a>
+
+                                            <nav class="nav__links" aria-label="Primary links">
+                                                <!-- nav contains navigation links; aria-label explains what this nav is. -->
+                                                <a href="#features">Features</a>
+                                                <!-- anchor link scrolls to the Features section (id="features"). -->
+                                                <a href="#pricing">Pricing</a>
+                                                <a href="#faq">FAQ</a>
+                                                <a class="btn btn--ghost" href="auth/sign-in.html">Sign in</a>
+                                                <!-- class="btn" styles this link like a button (still a link). -->
+                                                <a class="btn btn--primary" href="dashboard/index.html">Open dashboard</a>
+                                            </nav>
+
+                                            <details class="nav__menu">
+                                                <!-- <details> creates a toggle (open/close) without JavaScript. -->
+
+                                                <summary aria-label="Open menu">Menu</summary>
+                                                <!-- <summary> is the clickable label for <details>. aria-label is for screen readers. -->
+
+                                                <div class="nav__menu-panel" role="menu">
+                                                    <!-- role="menu" tells assistive tech this behaves like a menu (demo pattern). -->
+                                                    <a role="menuitem" href="#features">Features</a>
+                                                    <!-- role="menuitem" marks an item inside a role="menu". -->
+                                                    <a role="menuitem" href="#pricing">Pricing</a>
+                                                    <a role="menuitem" href="#faq">FAQ</a>
+                                                    <hr class="sep" />
+                                                    <!-- <hr> is a divider line; class adds styling. -->
+                                                    <a role="menuitem" class="btn" href="auth/sign-in.html">Sign in</a>
+                                                    <a role="menuitem" class="btn btn--primary" href="dashboard/index.html">Open dashboard</a>
+                                                </div>
+                                                <!-- end menu panel -->
+                                            </details>
+                                            <!-- end mobile menu -->
+                                        </div>
+                                        <!-- end nav container -->
+                                    </header>
+                                    <!-- end header -->
+
+                                    <main id="main">
+                                        <!-- main = the primary unique content of the page. id matches skip-link target. -->
+
+                                        <section class="hero">
+                                            <!-- hero = first big section (headline + primary action). -->
+
+                                            <div class="container hero__grid">
+                                                <!-- hero__grid creates a responsive two-column layout on larger screens. -->
+
+                                                <div class="stack stack-lg">
+                                                    <!-- stack is a spacing utility: consistent vertical gaps. -->
+
+                                                    <div class="stack" style="gap: 12px;">
+                                                        <!-- inline style used only for a small spacing tweak (practice: later move to CSS). -->
+                                                        <h1>Build real UI skills—fast.</h1>
+                                                        <!-- h1 is the main page heading (usually one per page). -->
+
+                                                        <p class="hero__lead">
+                                                            <!-- hero__lead uses slightly larger text for the intro. -->
+                                                            TaskFlow is a UI-only practice project to master <strong>HTML</strong>, <strong>CSS</strong>, then rebuild with
+                                                            <strong>Tailwind</strong> and <strong>Bootstrap</strong>.
+                                                            <!-- strong adds emphasis (semantic importance). -->
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="hero__actions">
+                                                        <!-- actions row: primary + secondary call-to-action buttons. -->
+                                                        <a class="btn btn--primary" href="auth/sign-up.html">Create account</a>
+                                                        <a class="btn" href="#features">See features</a>
+                                                    </div>
+
+                                                    <div class="alert" role="status">
+                                                        <!-- role="status" politely announces informational updates to screen readers. -->
+                                                        <strong>Practice goal:</strong>
+                                                        <span class="muted">Keep spacing, typography, and states consistent across every page.</span>
+                                                        <!-- muted is a softer text color for secondary text. -->
+                                                    </div>
+                                                </div>
+                                                <!-- end left hero content -->
+
+                                                <aside class="hero__panel" aria-label="Project preview">
+                                                    <!-- aside is complementary content; aria-label names it for screen readers. -->
+
+                                                    <div class="stack">
+                                                        <div class="inline" style="justify-content: space-between;">
+                                                            <!-- inline = horizontal row layout; justify-content spreads items. -->
+                                                            <strong>Dashboard preview</strong>
+                                                            <span class="badge">UI only</span>
+                                                            <!-- badge is a small label/pill UI component. -->
+                                                        </div>
+
+                                                        <div class="kpis" aria-label="KPIs">
+                                                            <!-- aria-label names this group of KPI cards. -->
+                                                            <div class="kpi">
+                                                                <div class="muted">Active</div>
+                                                                <div class="kpi__value">5</div>
+                                                                <!-- kpi__value is the main metric number. -->
+                                                            </div>
+                                                            <div class="kpi">
+                                                                <div class="muted">Due</div>
+                                                                <div class="kpi__value">12</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <a class="btn btn--primary" href="dashboard/index.html">Open dashboard</a>
+                                                        <small>Tip: Compare the same layout later in Tailwind + Bootstrap.</small>
+                                                        <!-- small is for fine print / secondary notes. -->
+                                                    </div>
+                                                </aside>
+                                                <!-- end hero aside -->
+                                            </div>
+                                            <!-- end hero grid container -->
+                                        </section>
+                                        <!-- end hero -->
+
+                                        <section id="features" class="section surface">
+                                            <!-- id enables #features anchor; section adds vertical padding; surface changes background. -->
+
+                                            <div class="container stack stack-lg">
+                                                <div class="stack" style="gap: 10px;">
+                                                    <h2>What you’ll practice</h2>
+                                                    <!-- h2 starts a new major section under the page’s h1. -->
+                                                    <p>These are the skills you use in real projects, not toy examples.</p>
+                                                </div>
+
+                                                <div class="grid grid--3" aria-label="Feature list">
+                                                    <!-- grid--3 becomes 3 columns on larger screens; aria-label names this group. -->
+                                                    <article class="feature">
+                                                        <!-- article is a self-contained piece of content (a “feature card”). -->
+                                                        <h3>Layout</h3>
+                                                        <p>Mobile-first Flexbox + Grid patterns for landing + dashboard UIs.</p>
+                                                    </article>
+                                                    <article class="feature">
+                                                        <h3>Components</h3>
+                                                        <p>Buttons, forms, cards, alerts, tables—consistent and reusable.</p>
+                                                    </article>
+                                                    <article class="feature">
+                                                        <h3>Accessibility</h3>
+                                                        <p>Semantic structure, labels, focus states, keyboard-friendly menus.</p>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- end features -->
+
+                                        <section id="pricing" class="section">
+                                            <!-- pricing section: practice cards + grid + hierarchy. -->
+
+                                            <div class="container stack stack-lg">
+                                                <div class="stack" style="gap: 10px;">
+                                                    <h2>Pricing section (layout practice)</h2>
+                                                    <p>Use this to practice grids, cards, and typography hierarchy.</p>
+                                                </div>
+
+                                                <div class="pricing" aria-label="Pricing">
+                                                    <!-- pricing becomes 3 columns on larger screens (see CSS media query). -->
+
+                                                    <article class="card">
+                                                        <!-- card is a reusable surface with border + shadow + radius. -->
+                                                        <div class="card__body stack">
+                                                            <!-- card__body adds padding inside a card. -->
+                                                            <div class="inline" style="justify-content: space-between;">
+                                                                <strong>Starter</strong>
+                                                                <span class="badge">Free</span>
+                                                            </div>
+                                                            <div class="price">$0</div>
+                                                            <p>Best for learning core layouts and components.</p>
+                                                            <a class="btn btn--primary" href="auth/sign-up.html">Start</a>
+                                                        </div>
+                                                    </article>
+
+                                                    <article class="card">
+                                                        <div class="card__body stack">
+                                                            <div class="inline" style="justify-content: space-between;">
+                                                                <strong>Pro</strong>
+                                                                <span class="badge">Popular</span>
+                                                            </div>
+                                                            <div class="price">$12</div>
+                                                            <p>Practice denser UI and dashboard layouts.</p>
+                                                            <a class="btn btn--primary" href="auth/sign-up.html">Choose Pro</a>
+                                                        </div>
+                                                    </article>
+
+                                                    <article class="card">
+                                                        <div class="card__body stack">
+                                                            <div class="inline" style="justify-content: space-between;">
+                                                                <strong>Team</strong>
+                                                                <span class="badge">Scale</span>
+                                                            </div>
+                                                            <div class="price">$29</div>
+                                                            <p>Practice tables, settings forms, and multi-page nav.</p>
+                                                            <a class="btn btn--primary" href="auth/sign-up.html">Choose Team</a>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                                <!-- end pricing grid -->
+                                            </div>
+                                        </section>
+                                        <!-- end pricing -->
+
+                                        <section id="faq" class="section surface">
+                                            <div class="container stack stack-lg">
+                                                <div class="stack" style="gap: 10px;">
+                                                    <h2>FAQ</h2>
+                                                    <p>Practice accessible accordion UI using native HTML.</p>
+                                                </div>
+
+                                                <div class="faq" aria-label="Frequently asked questions">
+                                                    <!-- FAQ uses <details> so it’s accessible and keyboard-friendly by default. -->
+                                                    <details>
+                                                        <summary>Is this a real app?</summary>
+                                                        <p style="margin-top: 10px;">Not yet—this scaffold is UI-only. Later you can connect real APIs.</p>
+                                                    </details>
+                                                    <details>
+                                                        <summary>Why rebuild it multiple times?</summary>
+                                                        <p style="margin-top: 10px;">You’ll understand fundamentals, then learn Tailwind and Bootstrap properly.</p>
+                                                    </details>
+                                                    <details>
+                                                        <summary>What should I focus on first?</summary>
+                                                        <p style="margin-top: 10px;">Spacing consistency, typography hierarchy, and accessible forms.</p>
+                                                    </details>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- end FAQ -->
+                                    </main>
+                                    <!-- end main -->
+
+                                    <footer class="footer">
+                                        <!-- footer = bottom area with links/info. -->
+                                        <div class="container footer__grid">
+                                            <!-- footer__grid becomes columns on larger screens. -->
+
+                                            <div class="stack">
+                                                <a class="brand" href="index.html">
+                                                    <span class="brand__mark" aria-hidden="true"></span>
+                                                    <span>TaskFlow</span>
+                                                </a>
+                                                <small>Pure HTML/CSS scaffold for design practice.</small>
+                                            </div>
+
+                                            <div class="stack" style="gap: 8px;">
+                                                <strong>Pages</strong>
+                                                <a href="auth/sign-in.html">Sign in</a>
+                                                <a href="auth/sign-up.html">Sign up</a>
+                                                <a href="dashboard/index.html">Dashboard</a>
+                                            </div>
+
+                                            <div class="stack" style="gap: 8px;">
+                                                <strong>Sections</strong>
+                                                <a href="#features">Features</a>
+                                                <a href="#pricing">Pricing</a>
+                                                <a href="#faq">FAQ</a>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                    <!-- end footer -->
+                                </body>
+                            </html>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

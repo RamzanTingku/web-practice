@@ -1,0 +1,123 @@
+/* Flex Play — style.css
+   Purpose: a compact playground to practice CSS Flexbox concepts.
+   Edit this file and reload html/flex-practice/index.html to see changes.
+*/
+
+:root{
+  --bg:#f6fafc;
+  --card:#ffffff;
+  --muted:#556070;
+  --accent:#2563eb;
+  --gap:16px;
+  --radius:12px;
+  --container:1000px;
+  --max-width:100%;
+  --pad:18px;
+}
+
+/* Reset + base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;color:#0b1220;background:var(--bg)}
+.container{width:min(var(--container),calc(100% - 40px));margin:0 auto}
+
+/* Visual helpers */
+.card{background:var(--card);border-radius:var(--radius);padding:18px;margin-bottom:18px;box-shadow:0 6px 20px rgba(10,20,40,0.05)}
+.demo{margin-top:20px}
+.notes{color:var(--muted);font-size:0.95rem;margin-top:10px}
+
+/* Accessibility helper */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------------------- FLEX UTILITIES (learning section) ---------------------- */
+/* Use these helpers while experimenting. They demonstrate common flex patterns. */
+.flex{display:flex}
+.flex-row{display:flex;flex-direction:row}
+.flex-column{display:flex;flex-direction:column}
+.wrap{flex-wrap:wrap}
+.nowrap{flex-wrap:nowrap}
+.center{justify-content:center;align-items:center}
+.space-between{justify-content:space-between}
+.gap-1{gap:8px}
+.gap-2{gap:16px}
+.align-start{align-items:flex-start}
+.align-center{align-items:center}
+.align-end{align-items:flex-end}
+
+/* Individual flex shorthand examples for items */
+.flex-1{flex:1 1 0}
+.flex-none{flex:0 0 auto}
+.flex-0{flex:0 0 auto}
+
+/* ---------------------- Header / Nav (flex row) ---------------------- */
+.site-header{background:transparent;padding:14px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:700;color:var(--accent);text-decoration:none}
+.nav{display:flex;gap:12px}
+.nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px}
+.nav a:hover{background:#f0f6ff;color:var(--accent)}
+
+/* ---------------------- Demo areas ---------------------- */
+.demo-area{border-radius:10px;padding:18px;background:linear-gradient(180deg, #ffffff, #fcfdff);border:1px solid rgba(10,20,40,0.03)}
+
+/* Centering example */
+.demo-center{display:flex;min-height:140px;align-items:center;justify-content:center}
+.box{padding:16px 26px;background:var(--accent);color:white;border-radius:10px}
+
+/* Wrapping example */
+.demo-wrap{display:flex;flex-wrap:wrap;gap:12px}
+.chip{background:#fbfbff;padding:8px 12px;border-radius:999px;border:1px solid rgba(10,20,40,0.04)}
+
+/* Ordering & grow */
+.demo-order{display:flex;gap:12px;min-height:90px;align-items:center}
+.item{padding:12px;border-radius:8px;background:#f8fafc;border:1px solid rgba(10,20,40,0.03)}
+
+/* Sidebar layout */
+.demo-sidebar{display:flex;gap:16px}
+.side{flex:0 0 220px;background:#fff;border-radius:8px;padding:12px;border:1px solid rgba(10,20,40,0.03)}
+.content-area{flex:1 1 0}
+.row-cards{display:flex;gap:12px;margin-top:12px}
+.card-mini{background:#fff;padding:12px;border-radius:8px;border:1px solid rgba(10,20,40,0.03);flex:1}
+
+/* Align-self demo */
+.demo-align{display:flex;min-height:120px;gap:12px;align-items:flex-start}
+.tall{background:#fff;padding:12px;border-radius:8px;height:120px}
+.mid{background:#fff;padding:12px;border-radius:8px;height:80px}
+.short{background:#fff;padding:12px;border-radius:8px;height:40px}
+
+/* Inline form */
+.demo-form{display:flex;gap:8px;align-items:center}
+.demo-form input{flex:1 1 auto;padding:10px;border-radius:8px;border:1px solid rgba(10,20,40,0.06)}
+.btn-primary{background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;border:none}
+
+/* Footer */
+.site-footer{padding:24px 0;color:var(--muted)}
+.footer-inner{display:flex;justify-content:center}
+
+/* ---------------------- Responsive tweaks ---------------------- */
+@media (max-width:720px){
+  .nav{display:none}
+  .demo-sidebar{flex-direction:column}
+  .side{flex:0 0 auto}
+  .row-cards{flex-direction:column}
+}
+
+/* ---------------------- Notes & exercises (comments) ---------------------- */
+/*
+  FLEX PROPERTIES QUICK REFERENCE:
+  - display:flex -> creates a flex formatting context for direct children
+  - flex-direction -> row | column (main axis direction)
+  - flex-wrap -> nowrap | wrap | wrap-reverse (line wrapping)
+  - justify-content -> controls alignment along main axis (start, center, end, space-between, space-around)
+  - align-items -> controls alignment along cross axis for all items (start, center, end, stretch)
+  - align-self -> per-item override of align-items
+  - gap -> spacing between flex items (modern replacement for margins)
+  - order -> integer to change visual order
+  - flex (shorthand) -> flex-grow flex-shrink flex-basis (e.g. flex:1 1 0)
+
+  Practice exercises:
+  - change .demo-wrap to nowrap and see overflow.
+  - set .demo-order children order to change layout without moving DOM.
+  - try .demo-center with align-items:flex-start to see vertical shift.
+  - change .demo-sidebar to column on small screens (see media query).
+*/
