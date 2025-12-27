@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Practice Projects</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f3f4f6;
+        }
+        h1 {
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+        .project-desc {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Practice Projects</h1>
+    <div class="project-grid">
+        <a href="bootstrap-practice/index.html" class="project-card">
+            <div class="project-title">Bootstrap Practice</div>
+            <div class="project-desc">Learning Bootstrap components and utilities.</div>
+        </a>
+        <a href="css-practice/index.html" class="project-card">
+            <div class="project-title">CSS Practice</div>
+            <div class="project-desc">Fundamental CSS concepts and styling.</div>
+        </a>
+        <a href="tailwind-practice/index.html" class="project-card">
+            <div class="project-title">Tailwind Practice</div>
+            <div class="project-desc">Utility-first CSS with Tailwind.</div>
+        </a>
+        <a href="flex-practice/index.html" class="project-card">
+            <div class="project-title">Flexbox Practice</div>
+            <div class="project-desc">Mastering CSS Flexbox layouts.</div>
+        </a>
+        <a href="grid-practice/index.html" class="project-card">
+            <div class="project-title">Grid Practice</div>
+            <div class="project-desc">CSS Grid layout experiments.</div>
+        </a>
+        <a href="practice-project-1/dashboard/index.html" class="project-card">
+            <div class="project-title">Practice Project 1</div>
+            <div class="project-desc">Dashboard and Auth pages.</div>
+        </a>
+    </div>
+</body>
+</html>
