@@ -1,0 +1,17 @@
+{
+  "name": "workspace-live-server",
+  "version": "1.0.0",
+  "description": "Tiny local dev server that lists index.html files and supports live-reload",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "mime": "^4.1.0",
+    "minimist": "^1.2.8",
+    "ws": "^8.18.3"
+  }
+}
