@@ -319,7 +319,17 @@ span { display: inline; }</pre>
                             <p>Content for section B. The header sticks until the container ends.</p>
                             <p>More content here...</p>
                         </div>
+                        <div class="sticky-container">
+                            <div class="sticky-item">Sticky Header C</div>
+                            <p>Content for section C. Sticky headers are great for long lists or sections.</p>
+                            <p>More content here...</p>
+                        </div>
                     </div>
+                    <pre class="code-snippet">.sticky-item {
+  position: sticky;
+  top: 0;
+  /* Sticks when it hits top */
+}</pre>
                 </div>
 
                 <!-- Z-Index -->
