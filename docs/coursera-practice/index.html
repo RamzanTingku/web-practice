@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera Practice Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .project-desc {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .project-tag {
+            display: inline-block;
+            background: #ddd6fe;
+            color: #6d28d9;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to All Projects</a>
+        
+        <header>
+            <h1>Coursera Practice Projects</h1>
+            <p class="subtitle">Interactive JavaScript applications and web projects</p>
+        </header>
+
+        <div class="project-grid">
+            <a href="travel-recommendation/travel_recommendation.html" class="project-card">
+                <div class="project-icon">✈️</div>
+                <div class="project-title">Travel Recommendation</div>
+                <div class="project-desc">Search and explore travel destinations with real-time timezone display.</div>
+                <span class="project-tag">API Integration</span>
+            </a>
+
+            <a href="book-management-app/index.html" class="project-card">
+                <div class="project-icon">📚</div>
+                <div class="project-title">Book Management App</div>
+                <div class="project-desc">Organize and manage your book collection with CRUD operations.</div>
+                <span class="project-tag">LocalStorage</span>
+            </a>
+
+            <a href="calculator-app/index.html" class="project-card">
+                <div class="project-icon">🔢</div>
+                <div class="project-title">Calculator App</div>
+                <div class="project-desc">Full-featured calculator with standard operations.</div>
+                <span class="project-tag">Math Logic</span>
+            </a>
+
+            <a href="colorful-memory-game/index.html" class="project-card">
+                <div class="project-icon">🎨</div>
+                <div class="project-title">Colorful Memory Game</div>
+                <div class="project-desc">Test your memory with this interactive color matching game.</div>
+                <span class="project-tag">Game Logic</span>
+            </a>
+
+            <a href="converter-app/index.html" class="project-card">
+                <div class="project-icon">🔄</div>
+                <div class="project-title">Unit Converter App</div>
+                <div class="project-desc">Convert between different units of measurement.</div>
+                <span class="project-tag">Conversion</span>
+            </a>
+
+            <a href="health-analysis/index.html" class="project-card">
+                <div class="project-icon">🏥</div>
+                <div class="project-title">Health Analysis</div>
+                <div class="project-desc">Track and analyze health metrics with data visualization.</div>
+                <span class="project-tag">Data Analysis</span>
+            </a>
+
+            <a href="health_article/index.html" class="project-card">
+                <div class="project-icon">📰</div>
+                <div class="project-title">Health Article</div>
+                <div class="project-desc">Health information portal with articles and resources.</div>
+                <span class="project-tag">Content</span>
+            </a>
+
+            <a href="portfolio/index.html" class="project-card">
+                <div class="project-icon">💼</div>
+                <div class="project-title">Portfolio Website</div>
+                <div class="project-desc">Professional portfolio showcase with projects and skills.</div>
+                <span class="project-tag">Responsive</span>
+            </a>
+
+            <a href="todo-checklist/index.html" class="project-card">
+                <div class="project-icon">✅</div>
+                <div class="project-title">Todo Checklist</div>
+                <div class="project-desc">Simple checklist app for tracking daily tasks.</div>
+                <span class="project-tag">Simple CRUD</span>
+            </a>
+
+            <a href="todolist-app/index.html" class="project-card">
+                <div class="project-icon">📝</div>
+                <div class="project-title">Advanced Todo App</div>
+                <div class="project-desc">Feature-rich todo list with categories and priorities.</div>
+                <span class="project-tag">Advanced CRUD</span>
+            </a>
+
+            <a href="typing-test-app/index.html" class="project-card">
+                <div class="project-icon">⌨️</div>
+                <div class="project-title">Typing Test App</div>
+                <div class="project-desc">Test your typing speed and accuracy with real-time feedback.</div>
+                <span class="project-tag">Performance</span>
+            </a>
+
+            <a href="weather_report/index.html" class="project-card">
+                <div class="project-icon">🌤️</div>
+                <div class="project-title">Weather Report</div>
+                <div class="project-desc">Get current weather conditions and forecasts.</div>
+                <span class="project-tag">API Integration</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
