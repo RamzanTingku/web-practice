@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio — Ramzan Ullah</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="home">
+    <header class="site-header">
+        <div class="brand-card" aria-hidden="false">
+            <div class="brand-name">Ramzan Ullah</div>
+            <div class="contact">
+                <div class="contact-line">✉️ Ramzan Ullah@jeemail.com</div>
+                <div class="contact-line">📞 +13456764598</div>
+            </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+            <ul class="nav-list">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="site-main">
+        <section id="about" class="about">
+            <div class="about-grid">
+                <img src="assets/man-1459246_1920.png" alt="Profile illustration" class="about-img">
+                <div class="about-content">
+                    <h1 class="name-large">Hi, I'm Ramzan! <span class="wave">👋</span></h1>
+                    <p class="summary"> I am a full‑stack developer with 2 years of experience building web applications
+                        using HTML, CSS and JavaScript. I enjoy crafting user-friendly interfaces and backend services,
+                        and I'm seeking roles where I can contribute to real-world products while continuing to learn.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills nav_section">
+            <h2>Skills</h2>
+
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <img src="assets/html5.png" alt="HTML5 logo" class="skill-icon">
+                    <h3>HTML</h3>
+                    <p class="exp">4 years experience</p>
+                </article>
+
+                <article class="skill-card">
+                    <img src="assets/js.jpeg" alt="JavaScript logo" class="skill-icon">
+                    <h3>JavaScript</h3>
+                    <p class="exp">3 years experience</p>
+                </article>
+
+                <article class="skill-card">
+                    <img src="assets/react.png" alt="React logo" class="skill-icon">
+                    <h3>React</h3>
+                    <p class="exp">2 years experience</p>
+                </article>
+
+                <article class="skill-card">
+                    <img src="assets/node.png" alt="Node.js logo" class="skill-icon">
+                    <h3>Node.js</h3>
+                    <p class="exp">2 years experience</p>
+                </article>
+
+                <article class="skill-card">
+                    <img src="assets/java.png" alt="Java logo" class="skill-icon">
+                    <h3>Java</h3>
+                    <p class="exp">4 years experience</p>
+                </article>
+
+                <article class="skill-card">
+                    <img src="assets/CSS3.png" alt="CSS3 logo" class="skill-icon">
+                    <h3>CSS</h3>
+                    <p class="exp">4 years experience</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="projects nav_section">
+            <h2>Projects</h2>
+            <article class="project">
+                <h3>Smart Resume Builder</h3>
+                <ul>
+                    <li>Built a web application that generates ATS-friendly resumes from user input, supports multiple
+                        templates, and exports polished PDFs. Implements client-side validation and saves drafts
+                        in localStorage.</li>
+                </ul>
+                <hr>
+            </article>
+            <article class="project">
+                <h3>Real-time Collaborative Notes</h3>
+                <ul>
+                    <li>Implemented a collaborative notes app using WebSockets to sync edits between users in
+                        real-time, with basic conflict resolution, presence indicators, and offline editing support.</li>
+                </ul>
+                <hr>
+            </article>
+            <article class="project">
+                <h3>Expense Tracker with Charts</h3>
+                <ul>
+                    <li>Developed an expense tracker featuring categorization, monthly reports and interactive charts
+                        using Chart.js. Data persists locally via IndexedDB and can be exported as CSV.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="recommendations" class="recommendations nav_section">
+            <h2>Recommendations</h2>
+
+            <div class="recommendations-grid">
+                <blockquote class="recommendation">
+                    Ramzan quickly understood our requirements and delivered a robust, maintainable front-end; proactive
+                    communicator, met deadlines, and improved usability—would gladly collaborate again on future web and
+                    API projects.
+                    <footer>— Priya Kumar, Product Manager</footer>
+                </blockquote>
+
+                <blockquote class="recommendation">
+                    As a teammate Ramzan brings curiosity and technical rigor; he troubleshot production issues swiftly,
+                    suggested practical improvements, and helped ship features that increased user engagement
+                    measurably.
+                    <footer>— Ahmed Malik, Engineering Lead</footer>
+                </blockquote>
+
+                <blockquote class="recommendation">
+                    Ramzan's commitment to clean code and testing raised our quality standards. He mentors peers,
+                    documents decisions clearly, and consistently delivers components that are performant and easy to
+                    extend.
+                    <footer>— Sara Bennett, Senior Developer</footer>
+                </blockquote>
+            </div>
+
+            <!-- Submission form -->
+            <form id="rec-form" class="rec-form" aria-label="Submit recommendation">
+                <h3>Submit a recommendation</h3> <input name="author" type="text" placeholder="Your name" required>
+                <input name="role" type="text" placeholder="Your role (optional)"> <textarea name="text"
+                    placeholder="Write recommendation (25–30 words)" required maxlength="300"></textarea> <button
+                    type="submit">Submit</button>
+            </form> <!-- Confirmation modal (hidden by default) -->
+            <div id="rec-confirm" class="rec-modal" role="dialog" aria-modal="true" aria-hidden="true">
+                <div class="rec-modal-inner">
+                    <p id="rec-preview"></p>
+                    <div class="rec-modal-actions"> 
+                        <button id="rec-confirm-yes" type="button">Confirm</button> 
+                        <button id="rec-confirm-no" type="button">Cancel</button> 
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="icon-row"> <a href="#home" class="iconbutton" aria-label="Go to top">
+            <img src="assets/home.png"
+                alt="Home"> </a> </div>
+
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
